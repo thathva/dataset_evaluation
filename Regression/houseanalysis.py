@@ -1,5 +1,5 @@
 ''' 
-Predicting house rates using Multi Regression on Python 3.6
+Predicting house rates using Regression on Python 3.6
 Dataset downloaded from https://www.kaggle.com/harlfoxem/housesalesprediction
 '''
 #import libraries
