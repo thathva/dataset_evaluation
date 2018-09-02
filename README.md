@@ -1,2 +1,3 @@
 # dataset_evaluation
-to evaluate kaggle datasets as a personal skills development
+To evaluate kaggle datasets as a personal skills development
+Please feel free to recommend or rectifiying any mistakes :)
