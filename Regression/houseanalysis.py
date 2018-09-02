@@ -52,25 +52,15 @@ X[:,7]=LabelEncoder().fit_transform(X[:,7])
 x_train,x_test,y_train,y_test=train_test_split(X,df['price'],test_size=0.2)
 
 #fit the classifer
-clf=LinearRegression.fit(x_train,y_train)
+clf=LinearRegression().fit(x_train,y_train)
 
 #predict with test set
 pred=clf.predict(x_test)
 
 #r2 score
-from sklean.metrics import r2_score
+from sklearn.metrics import r2_score
 r2_score(y_test,pred)
 
 #outputs 53%
-
-#check the ols matrix using statsmodels
-import statsmodels.formula.api as smf
-import statsmodels.api as sm
-
-x2=sm.add_constant(X)
-est=sm.OLS(df['price'],x2)
-est2=est.fit()
-est2.summary()
-
 
 
