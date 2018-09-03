@@ -61,6 +61,6 @@ pred=clf.predict(x_test)
 from sklearn.metrics import r2_score
 r2_score(y_test,pred)
 
-#outputs 53%
+
 
 
