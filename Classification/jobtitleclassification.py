@@ -8,9 +8,17 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 #read dataset
 df=pd.read_csv("classification.csv")
+
+#plot scatterplot between biweekly high and low rate
+plt.scatter(df['Biweekly High Rate'],df['Biweekly Low Rate'])
+plt.show()
+
+#prints 97%. A very strong and only meaningful correlation in the dataset
+print(df[['Biweekly High Rate','Biweekly Low Rate']].corr())
 
 #drop FY column
 df.drop(['FY'],axis=1,inplace=True)
