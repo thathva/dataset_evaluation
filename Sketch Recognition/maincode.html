@@ -1,0 +1,121 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+body {
+background-image:url("vhoa0.jpg");
+background-position:center;
+
+}
+#predict-button {
+ background-color: white; 
+  color: black; 
+  border: 4px solid #DAA520;
+  
+  border-color: #DAA520 ;
+  
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 2px;
+  cursor: pointer;
+}
+#image-selector{
+ background-color: white; 
+  color: black; 
+  border: 4px solid #DAA520;
+  
+  border-color: #DAA520 ;
+  
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 3px 2px;
+  cursor: pointer;
+  
+ }
+ #selected-image{
+ background-color: #DAA520
+color: black;
+ }
+ 
+#smruti
+{
+margin-top:200px;
+}
+#smr
+{
+margin-top:210px;
+margin-left:80px;
+}
+
+#image-selector:hover {
+  background-color: #DAA520;
+  color: white;
+}
+#predict-button:hover {
+  background-color: #DAA520;
+  color: white;
+}
+p{
+color:red;
+}
+
+h2
+{
+font-size:50px;
+}
+
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$("#predict-button").hide();
+  $("#image-selector").click(function(event){
+    $("#predict-button").fadeIn();
+    
+  });
+});
+</script>
+<body>
+<title>Sketch Detector</title>
+<header><hr><b><h2 align='center'>SKETCH DETECTOR</h2><b></header>
+	<div id="smruti">
+	<input id="image-selector" type="file">
+	<div id="smr"><button id="predict-button">Predict</button> </div>
+	<p>Predictions</p>
+	<p><span id="1-prediction"></span></p>
+	
+	<img id="selected-image" src=""/>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		let base64image;
+		$("#image-selector").change(function() {
+			let reader=new FileReader();
+			reader.onload=function(e){
+			let dataURL=reader.result;
+			$("#selected-image").attr("src",dataURL);
+			base64image=dataURL.replace("data:image/jpeg;base64,","");
+			console.log(base64image);
+			}
+			reader.readAsDataURL($("#image-selector")[0].files[0]);
+			$("#1-prediction").text("");
+			});
+			
+			$("#predict-button").click(function(event){
+			let message={ image:base64image}
+			console.log(message);
+			
+			$.post("http://localhost:5000",JSON.stringify(message),function(response){
+			$("#1-prediction").text(response.prediction.person);
+			console.log(response);
+			});
+			});
+			</script>
+			</html>
+			
