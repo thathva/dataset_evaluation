@@ -57,6 +57,12 @@ tech
 instincts
 one
 two
+required
+30
+money
+back
+gurantee
+warranty
 three
 four
 five
